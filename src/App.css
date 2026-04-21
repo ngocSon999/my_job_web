@@ -10,9 +10,9 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   color: var(--text-dark);
-  background-color: #fff;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background-color: #f8f9fa;
   overflow-x: hidden;
 }
 
@@ -51,7 +51,23 @@ body {
   padding: 100px 0;
   background-size: 24px 24px;
 }
+.sidebar-container {
+  width: 260px;
+  height: calc(100vh - 70px); /* 70px là chiều cao navbar của bạn */
+  position: sticky;
+  overflow-y: auto; /* Cho phép cuộn nếu menu quá dài */
+}
 
+/* Hiệu ứng hover cho menu chuyên nghiệp hơn */
+.nav-link:hover {
+  background-color: #f1f4f9;
+  color: #0d6efd !important;
+}
+
+.nav-link.active {
+  background-color: #0d6efd;
+  color: white !important;
+}
 /* Hiệu ứng đổ bóng mờ ảo phía sau Hero */
 .hero-section::before {
   content: "";
@@ -147,4 +163,92 @@ footer small {
 /* 7. Utilities */
 .text-primary {
   color: var(--primary-color) !important;
+}
+
+/* Sidebar cơ bản */
+.sidebar-container {
+  width: 260px;
+  min-width: 260px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* 1. Xử lý cho Màn hình lớn (Desktop) */
+@media (min-width: 768px) {
+  .sidebar-container {
+    display: block !important;
+    margin-left: 0 !important;
+    transform: none !important;
+    position: relative !important;
+  }
+
+  /* Navbar trên desktop không cần nút menu */
+  .d-md-none {
+    display: none !important;
+  }
+}
+
+/* 2. Xử lý cho Màn hình nhỏ (Mobile) */
+@media (max-width: 767.98px) {
+  .sidebar-container {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1050;
+    /* Đẩy sidebar ra ngoài bên trái */
+    transform: translateX(-100%);
+  }
+
+  /* Khi state isSidebarOpen = true */
+  .sidebar-show {
+    transform: translateX(0) !important;
+  }
+
+  .sidebar-hide {
+    transform: translateX(-100%) !important;
+  }
+}
+
+/* Hiệu ứng hover cho menu */
+.nav-link:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd !important;
+}
+
+/* Tinh chỉnh nút bấm trong bảng cho gọn */
+.table .btn-sm {
+  padding: 0.25rem 0.6rem; /* Giảm padding */
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border-width: 1.5px; /* Làm viền đậm hơn một chút cho nét */
+}
+
+/* Hiệu ứng bo tròn (Pill) */
+.rounded-pill {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* Icon bên trong nút */
+.table .btn-sm i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Hiệu ứng hover cho sang */
+.table .btn-outline-info:hover,
+.table .btn-outline-primary:hover,
+.table .btn-outline-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Căn chỉnh lại độ cao của các dòng trong bảng */
+.table td {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }
